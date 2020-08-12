@@ -1,0 +1,111 @@
+//
+//  ImportFiles.pch
+//  HGSWB
+//
+//  Created by 黄刚 on 2018/7/7.
+//  Copyright © 2018年 HuangGang'sMac. All rights reserved.
+//
+
+#ifndef ImportFiles_pch
+#define ImportFiles_pch
+
+#pragma mark -- ImportFiles
+#import "ImportHeader.h"
+#import "MLC-Swift.h"
+
+
+
+//==========***********通知配置***********==========//
+#define HGNotificationCenter    [NSNotificationCenter defaultCenter]
+
+
+//==========***********颜色配置***********==========//
+#define HGDEFAULT_COLOR         COLOR(240, 239, 246)
+#define HGMAIN_COLOR            COLOR(0, 173, 254)   //#00ADFE
+#define HGRED_COLOR             COLOR(255, 0, 38)
+#define HGGREEN_COLOR           COLOR(0, 184, 32)
+#define HGNOT_SELECT_COLOR      COLOR(135, 138, 143) //#878A8F
+#define HN_MIAN_STYLE_COLOR [UIColor colorWithRed:0.97 green:0.35 blue:0.35 alpha:1.0]
+#define HN_MIAN_GRAY_Color [UIColor colorWithRed:0.96 green:0.96 blue:0.97 alpha:1]
+
+
+
+#define COLOR(r, g, b)          [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0f]
+
+
+//==========***********尺寸计算***********==========//
+#define HGSCREEN_WIDTH          [UIScreen mainScreen].bounds.size.width
+#define HGSCREEN_HEIGHT         [UIScreen mainScreen].bounds.size.height
+#define HGTABBAR_TITLE_FONT     [UIFont systemFontOfSize:18.0f]
+#define HGNAV_TAB_BAR_WIDTH     HGSCREEN_WIDTH
+//状态栏Frame
+#define HGSTATUS_FRAME_HEIGHT   [[UIApplication sharedApplication] statusBarFrame].size.height
+//导航栏高度
+#define HGNAVIGATIONBAR_HEIGHT     44.0f
+//底部导航栏高度
+#define HGTabBarHeight          ([UIApplication sharedApplication] statusBarFrame].size.height>20?83:49)
+//状态栏高度+导航栏高度
+#define HGSTATUS_NAVIGATION_HEIGHT    (HGSTATUS_FRAME_HEIGHT + HGNAVIGATIONBAR_HEIGHT)
+
+
+
+
+//==========***********自定义方法***********==========//
+//自定义高效率的 NSLog(开发的时候打印，但是发布的时候不打印的NSLog)
+#ifdef DEBUG
+#define SLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#else
+#define SLog(...)
+#endif
+
+//MD5小写宏定义返回值
+#define MD5ForLower32Bate(md5Str)\
+({\
+const char *input = [md5Str UTF8String];\
+unsigned char result[CC_MD5_DIGEST_LENGTH];\
+CC_MD5(input, (CC_LONG)strlen(input), result);\
+\
+NSMutableString *digest = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];\
+for(NSInteger i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {\
+[digest appendFormat:@"%02x", result[i]];\
+}\
+(digest);\
+})\
+
+
+
+
+//判断当前的iPhone设备/系统版本
+//判断是否为iPhone
+#define sky_IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+
+//判断是否为iPad
+#define sky_IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+
+//判断是否为ipod
+#define sky_IS_IPOD ([[[UIDevice currentDevice] model] isEqualToString:@"iPod touch"])
+
+// 判断是否为 iPhone 5SE
+#define sky_iPhone5SE [[UIScreen mainScreen] bounds].size.width == 320.0f && [[UIScreen mainScreen] bounds].size.height == 568.0f
+
+// 判断是否为iPhone 6/6s/7
+#define sky_iPhone6_6s_7 [[UIScreen mainScreen] bounds].size.width == 375.0f && [[UIScreen mainScreen] bounds].size.height == 667.0f
+
+// 判断是否为iPhone 6Plus/6sPlus/7Plus
+#define sky_iPhone6Plus_6sPlus_7Plus [[UIScreen mainScreen] bounds].size.width == 414.0f && [[UIScreen mainScreen] bounds].size.height == 736.0f
+
+
+//判断是真机还是模拟器
+#if TARGET_OS_IPHONE
+//iPhone Device
+#endif
+
+#if TARGET_IPHONE_SIMULATOR
+//iPhone Simulator
+#endif
+
+
+
+#endif /* ImportFiles_pch */
+
+
