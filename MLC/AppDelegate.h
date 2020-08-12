@@ -1,14 +1,17 @@
 //
 //  AppDelegate.h
-//  MLC
+//  HGSWB
 //
-//  Created by Harley Huang on 9/6/2020.
-//  Copyright © 2020 HarleyHuang. All rights reserved.
+//  Created by 黄刚 on 2018/7/7.
+//  Copyright © 2018年 HuangGang'sMac. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "WXApi.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, WXApiDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
 
 
 @end
