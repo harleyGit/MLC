@@ -12,12 +12,19 @@
 #include <cstdlib>
 
 int main(int argc, const char * argv[]) {
+    
+    
+    
+    
+    int a;
+    int b = 12;
+    std::cout<<"变量  a="<<a<<std::endl;
 
-    std::cout << "Hello, World!\n";
-    std::cout<<"sss"<<"qqq"<<"eee";
+    std::cout << "Hello, World!\n"<<std::endl;
+    std::cout<<"sss"<<"qqq"<<"eee"<<std::endl;
     
     //cout是C++语言的输出指令，其中endl代表换行
-//    cout<<"我的第一个C++程序"<<endl;
+    std::cout<<"我的第一个C++程序"<<std::endl;
     //目的是让程序输出结果暂停，等用户按下任意键后才会退出程序的输出窗口。
     system("pause");
     return 0;
