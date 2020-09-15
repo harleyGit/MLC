@@ -1465,7 +1465,7 @@
 				CODE_SIGN_ENTITLEMENTS = MLC/MLC.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9V5V76MMGS;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MLC/SupportFiles/ImportFiles.pch";
@@ -1492,7 +1492,7 @@
 					"@executable_path/Frameworks",
 				);
 				PODS_ROOT = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.harley.loveFunction;
+				PRODUCT_BUNDLE_IDENTIFIER = com.harley.mlc;
 				PRODUCT_NAME = MLC;
 				SWIFT_OBJC_BRIDGING_HEADER = "MLC/SupportFiles/MLC-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1511,7 +1511,7 @@
 				CODE_SIGN_ENTITLEMENTS = MLC/MLC.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 38NM2Z2XRN;
+				DEVELOPMENT_TEAM = 9V5V76MMGS;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MLC/SupportFiles/ImportFiles.pch";
@@ -1538,7 +1538,7 @@
 					"@executable_path/Frameworks",
 				);
 				PODS_ROOT = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.harley.loveFunction;
+				PRODUCT_BUNDLE_IDENTIFIER = com.harley.mlc;
 				PRODUCT_NAME = MLC;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MLC/SupportFiles/MLC-Bridging-Header.h";

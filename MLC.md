@@ -37,6 +37,11 @@
 * 路由导航资料：
 	https://www.jianshu.com/p/8fdf0c1d2e4a	；
 	https://www.cnblogs.com/oc-bowen/p/6272721.html 	；
+
+* others:
+    - [你真的会写Podfile吗](https://www.jianshu.com/p/8a0fd6150159)
+    - [Swift 中的异常处理(附带与OC的对比)](https://juejin.im/post/6844904088086249479)
+    - [崩溃日志收集上传到服务器Demo](https://github.com/SugarGitHub/CrashCapture)
 	
 * 工具封装参考
     * [RxSwift 网络请求](http://www.manongjc.com/article/3755.html)
