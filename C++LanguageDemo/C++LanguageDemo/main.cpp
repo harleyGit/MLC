@@ -20,7 +20,18 @@ int main(int argc, const char * argv[]) {
     std::cout<<"val值为："<<val<<"地址为："<<&val<<std::endl;
     
     
-    
+    /*
+     
+     char str[30];
+     std::cout<<"数组长度：30， 可接受输入长度： 10"<<std::endl;
+     std::cout<<"请输入任意字符串"<<std::endl;
+     
+     //getline()函数进行输入，它会读取用户所输入的每个字符（包含空格符），直到用户按下【Enter】键为止。
+     //getline(字符串变量， 输入长度， 字符串结束符)
+     std::cin.getline(str, 10, '\n');
+     
+     std::cout<<"str字符串变量为："<<str<<std::endl;
+     */
     
     
     
@@ -52,6 +63,7 @@ int main(int argc, const char * argv[]) {
     
     std::cout << "\n\n>>>>>>>>>>>>>>>>>>    End!\n";
     system("pause");
+    
     return 0;
 }
 
