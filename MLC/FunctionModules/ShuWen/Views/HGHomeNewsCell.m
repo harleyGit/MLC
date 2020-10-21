@@ -99,15 +99,42 @@ static CGFloat itemSpace = 5;
 - (void)layoutSubviews {
     [self.contentView addSubview:self.titleLabel];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.equalTo(self.contentView).offset(15);
+        make.height.mas_greaterThanOrEqualTo(20);
+        make.left.top.equalTo(self.contentView).offset(10);
+        make.right.equalTo(self.contentView).offset(-10);
     }];
     
     [self.contentView addSubview:self.leftImageView];
+    [self.contentView addSubview:self.middleImageView];
+    [self.contentView addSubview:self.rightImageView];
     [self.leftImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.titleLabel);
-        make.top.equalTo(self.titleLabel.mas_bottom);
-        make.width.and.height.equalTo(@20);
+        make.left.equalTo(self.contentView).offset(10);
+        make.top.equalTo(self.titleLabel.mas_bottom).offset(4);
+        make.width.equalTo(@89);
+        make.height.equalTo(@66);
     }];
+    [self.middleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.leftImageView.mas_right).offset(16);
+        make.top.bottom.equalTo(self.leftImageView);
+        make.width.equalTo(@89);
+        make.height.equalTo(@66);
+    }];
+    [self.rightImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.middleImageView.mas_right).offset(16);
+        make.top.bottom.equalTo(self.leftImageView);
+        make.right.equalTo(self.contentView).offset(-10);
+        make.height.equalTo(@66);
+    }];
+    
+    [self.contentView addSubview:self.infoLabel];
+    [self.infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_greaterThanOrEqualTo(20);
+        make.left.equalTo(self.contentView).offset(10);
+        make.right.equalTo(self.contentView).offset(-10);
+        make.top.equalTo(self.leftImageView.mas_bottom).offset(10);
+        make.bottom.equalTo(self.contentView).offset(-10);
+    }];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
