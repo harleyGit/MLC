@@ -4,65 +4,38 @@
 //
 //  Created by Harely Huang on 2020/10/23.
 //
-
 #include <iostream>
 
+/**
+ *  #include并不是什么申请指令，只是将指定文件的内容，原封不动的拷贝进来
+ *  *.h文件做的是类的声明，包括类成员的定义和函数的声明
+ *  *.cpp文件做的类成员函数的具体实现（定义）
+ *  在*.cpp文件的第一行一般也是#include"*.h"文件，其实也相当于把*.h文件里的东西复制到*.cpp文件的开头
+ *
+ *  
+ */
 
-///算法： 数字在排序数组中出现的次数
-/// 返回指定值的第一次的索引
-/// @param array 传递的数组
-/// @param num 指定的值
-/// @param endIndex 数组终止索引
-/// @param startIndex 数组起始索引，默认值为0，放在最后规定
-int getSpecifyNumCount(int *array, int num, int endIndex, int startIndex = 0) {
-    
-    //数组违法，不存在
-    if (endIndex < startIndex) {
-        return  -1;
-    }
-    
-    //sizeof() 获取数组元素个数
-    int middle = (endIndex + startIndex)/2;
-    
-    if (*(array + middle) == num) {//指针获取数组的值
-        //array 表示是数组的首位地址
-        //*(array+middle - 1) 取第 middle - 1 位元素
-        //(*(array+middle - 1) < num && middle > 0) 表示当数组元素为中间时我们要取到最开始的元素，所以要进行判断
-        //middle == 0 当数组是第 0 位时，那它就是第一位
-        if ((*(array+middle - 1) < num && middle > 0) || middle == 0) {
-            return  middle;
-        }else {
-            //当索引是中间或者最后相同的元素时
-            endIndex = middle - 1;
-        }
-    }else if (*(array+middle) > num) {
-        //取上限的下一位，因为middle已经比过了
-        endIndex = middle - 1;
-    }else if(*(array+middle) < num) {
-        //取下限的上一位，因为middle已经比过了
-        startIndex = middle + 1;
-    }
-    printf("sss %d\n", 111);
-    
-    return  getSpecifyNumCount(array, num, endIndex, startIndex);
-}
+#include "Chapter6.hpp"
+
+
+
+
 
 int main(int argc, const char * argv[]) {
     
-    int array[7] = {1, 1, 2, 3, 4, 4, 4};
-    int index = getSpecifyNumCount( array, 1, 6);
-    std::cout << "🍎 🍎 🍎 索引为："<<index<<std::endl;
+    
+    Chapter6 chapter6;
+    chapter6.chapter6Run();
     
     
-    
-    std::cout << "<<<<<<<<<<<<<<<<<<    Start\n\n\n";
-    
-    /**/
+    /*
     int val = 5;
     int *prt3 = (int *)0x1000;
     prt3 = &val;
     std::cout<<"prt3值为："<<*prt3<<"地址为："<<&prt3<<std::endl;
     std::cout<<"val值为："<<val<<"地址为："<<&val<<std::endl;
+    
+     */
     
     
     /*
@@ -105,8 +78,7 @@ int main(int argc, const char * argv[]) {
      std::cout<<"ch1"<<"\t""\t"<<ch1<<"\t"<<&ch1 <<std::endl;
      */
     
-    
-    std::cout << "\n\n>>>>>>>>>>>>>>>>>>    End!\n";
+    printf("\n\n%s","✈️ 🦊 🐱 😊 🏠 ⛽️ 💲 💶 🐂 🌟 🚀 🏆");
     system("pause");
     
     return 0;
