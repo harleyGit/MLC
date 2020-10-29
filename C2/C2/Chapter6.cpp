@@ -52,3 +52,31 @@ int Chapter6:: getSpecifyNumCount(int *array, int num, int endIndex, int startIn
     
     return  getSpecifyNumCount(array, num, endIndex, startIndex);
 }
+
+
+typedef struct BinaryTree {
+    int value;
+    struct BinaryTree *leftChild;
+    struct BinaryTree *rightChild;
+}BinaryTree;
+
+int  binaryTreeNodeSearch(int index, BinaryTree *rootNode) {
+    
+    if ( rootNode == NULL) {
+        return  0;
+    }
+    
+    binaryTreeNodeSearch((index-1), rootNode->leftChild);
+    
+    PrintFormat2("%d", rootNode->value);
+    if ((index-1) < 0) {
+        PrintFormat2("第 K 大节点值是：%d", rootNode->value);
+        return  rootNode->value;
+    }
+    
+    binaryTreeNodeSearch((index-1), rootNode->rightChild);
+    
+    
+    return  0;
+}
+
