@@ -17,6 +17,7 @@ target 'MLC' do
   pod 'MGJRouter', '0.10.0'
   
   #Swift
+  #RxSwift: Homepage: https://github.com/ReactiveX/RxSwift
   pod 'RxSwift', '5.1.1'
   pod 'RxCocoa', '5.1.1'
   pod 'RxGesture', '3.0.2'
