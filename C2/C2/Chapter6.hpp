@@ -32,8 +32,20 @@ printf("🍎 🍎 🍎 🍎\n%d %s %s,  %s[%d]: " format "\n" "🍊 🍊 🍊 �
 
 class Chapter6 {
     
+    //二叉树结构体
+    typedef struct BinaryTree {
+        char value;
+        struct BinaryTree *leftChild;
+        struct BinaryTree *rightChild;
+    }BinaryTree;
+    
+    //二叉树输入值
+    char characters[3] = "01";//"012#456##9";
+    //起始变量值
+    int number = 0;
+    
 public:
-    /// P263  算法54： 数字在排序数组中出现的次数
+    /// P263  算法53： 数字在排序数组中出现的次数
     /// @param array 传递的数组
     /// @param num 指定的值
     /// @param endIndex 数组终止索引
@@ -44,8 +56,16 @@ public:
     //函数调用算法
     void chapter6Run();
     
-    int binaryTreeNodeSearch();
-
+    
+    /// P269 算法54: 二叉搜索树的第 K 大节点
+    /// @param index 第 index 节点
+    /// @param rootNode 根结点指针变量
+    int  binaryTreeNodeSearch(int index, BinaryTree *rootNode);
+    
+    
+    /// 二叉树创建
+    /// @param binaryTree 根结点指针
+    void createBinaryTree(BinaryTree *binaryTree, int index = 0);
     
 };
 

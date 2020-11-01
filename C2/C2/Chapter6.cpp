@@ -6,16 +6,35 @@
 //
 
 #include "Chapter6.hpp"
+#include <stdio.h>
+#include <stdlib.h>
+#include "math.h"
+#include "string.h"
 
 
 
 
 void Chapter6:: chapter6Run() {
     
+    /*
     int array[7] = {1, 1, 2, 3, 4, 4, 4};
     int index = this->getSpecifyNumCount( array, 1, 6);
     PrintFormat1("%d", index);
-    PrintFormat2("%d", index);
+    */
+    
+    PrintFormat2("%s 💣 💣 💣 💣 💣 💣 💣 💣 💣 💣 💣 💣", "=============================");
+    //结构体指针需要申请内存空间才可以使用
+    BinaryTree *binaryTree = (BinaryTree *)malloc(sizeof(BinaryTree));
+//    PrintFormat2("BinaryTree 字节数为：%lu", sizeof(binaryTree));
+//    binaryTree->value = '0';
+//    PrintFormat2("赋值前：value: %c, leftNode:%p, rightNode: %p", binaryTree->value, binaryTree->leftChild, binaryTree->rightChild);
+//
+    this->createBinaryTree(binaryTree);
+//    PrintFormat2("赋值后：value: %c, leftNode:%p, rightNode: %p", binaryTree->value, binaryTree->leftChild, binaryTree->rightChild);
+    int nodeValue = this->binaryTreeNodeSearch(3, binaryTree);
+    PrintFormat2("第 3 大节点value = %d", nodeValue);
+    
+    
     
     
 }
@@ -54,13 +73,40 @@ int Chapter6:: getSpecifyNumCount(int *array, int num, int endIndex, int startIn
 }
 
 
-typedef struct BinaryTree {
-    int value;
-    struct BinaryTree *leftChild;
-    struct BinaryTree *rightChild;
-}BinaryTree;
+//创建二叉树
+void Chapter6:: createBinaryTree(BinaryTree *binaryTree, int index) {
+    char data = characters[index];
+    
+//    binaryTree->value = 'a';
+//    BinaryTree *leftNode = (BinaryTree*)malloc(sizeof(BinaryTree));
+//    leftNode->value = 'b';
+//    binaryTree->leftChild = leftNode;
+//
+//    BinaryTree *rightNode = (BinaryTree*)malloc(sizeof(BinaryTree));
+//    leftNode->value = 'c';
+//    binaryTree->rightChild = rightNode;
+    
+    if (data == '#' || data == '\0') {
+        binaryTree = NULL;
+        
+        return ;
+    }else {
+        if (binaryTree == NULL) {
+            binaryTree = (BinaryTree*)malloc(sizeof(BinaryTree));
+        }
+        if (!binaryTree) {
+            exit(OVERFLOW);
+        }
 
-int  binaryTreeNodeSearch(int index, BinaryTree *rootNode) {
+        binaryTree->value = data;
+        createBinaryTree(binaryTree->leftChild,++index);
+//        createBinaryTree(binaryTree->rightChild, ++index);
+    }
+    
+}
+
+
+int  Chapter6:: binaryTreeNodeSearch(int index, BinaryTree *rootNode) {
     
     if ( rootNode == NULL) {
         return  0;
@@ -79,4 +125,5 @@ int  binaryTreeNodeSearch(int index, BinaryTree *rootNode) {
     
     return  0;
 }
+
 

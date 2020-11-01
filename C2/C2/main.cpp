@@ -4,22 +4,23 @@
 //
 //  Created by Harely Huang on 2020/10/23.
 //
-#include <iostream>
-
+/**
+ *printf格式化输出：https://blog.csdn.net/xiexievv/article/details/6831194
+ *
+ */
 /**
  *  #include并不是什么申请指令，只是将指定文件的内容，原封不动的拷贝进来
  *  *.h文件做的是类的声明，包括类成员的定义和函数的声明
  *  *.cpp文件做的类成员函数的具体实现（定义）
  *  在*.cpp文件的第一行一般也是#include"*.h"文件，其实也相当于把*.h文件里的东西复制到*.cpp文件的开头
- *
- *  
  */
 
+#include <iostream>
 #include "Chapter6.hpp"
 
 
 
-
+void testMethod_1();
 
 int main(int argc, const char * argv[]) {
     
@@ -28,6 +29,14 @@ int main(int argc, const char * argv[]) {
     chapter6.chapter6Run();
     
     
+    testMethod_1();
+    
+    system("pause");
+    
+    return 0;
+}
+
+void testMethod_1() {
     /*
     int val = 5;
     int *prt3 = (int *)0x1000;
@@ -79,9 +88,6 @@ int main(int argc, const char * argv[]) {
      */
     
     printf("\n\n%s","✈️ 🦊 🐱 😊 🏠 ⛽️ 💲 💶 🐂 🌟 🚀 🏆");
-    system("pause");
-    
-    return 0;
 }
 
 
