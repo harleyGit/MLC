@@ -256,7 +256,7 @@ int const estimatedCellHeight = 150.0f;
             if (!cell) {
                 cell = [[HGHomeNewsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([HGHomeNewsCell class])];
             }
-//            cell.model = model;
+            cell.model = model;
             resultCell = cell;
         }else {
             HGContentNewsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HGContentNewsCell class])];

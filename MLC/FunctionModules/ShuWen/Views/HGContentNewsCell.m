@@ -63,9 +63,7 @@ static CGFloat itemSpace = 5;
 - (void)setModel:(HGHomeNewsSummaryModel *)model {
     _model = model;
     _titleLabel.text = model.infoModel.title;
-    _titleLabel.backgroundColor = UIColor.redColor;
     if (model.infoModel.middle_image) {
-        CGFloat width = (HGSCREEN_WIDTH -20 -2 * itemSpace) / 3.0;
         _contentImageView.hidden = NO;
         [_contentImageView sd_setImageWithURL:[NSURL URLWithString:model.infoModel.middle_image.url]];
         //约束设置未写
@@ -74,7 +72,6 @@ static CGFloat itemSpace = 5;
         _contentImageView.hidden = YES;
     }
     
-    _deitialLabel.backgroundColor = UIColor.yellowColor;
     _deitialLabel.text = [NSString stringWithFormat:@"%@   %d阅读  0分钟前",model.infoModel.media_name,model.infoModel.read_count];
 }
 

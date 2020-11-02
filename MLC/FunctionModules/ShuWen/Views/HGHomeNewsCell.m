@@ -8,6 +8,7 @@
 
 #import "HGHomeNewsCell.h"
 
+//图片之间的间隙距离
 static CGFloat itemSpace = 5;
 @interface HGHomeNewsCell()
 
@@ -69,7 +70,7 @@ static CGFloat itemSpace = 5;
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
+        [self addCellChildView];
     }
     return self;
 }
@@ -96,37 +97,48 @@ static CGFloat itemSpace = 5;
     self.infoLabel.text = [NSString stringWithFormat:@"%@   %d阅读    0分钟前", model.infoModel.media_name, model.infoModel.read_count];
 }
 
-- (void)layoutSubviews {
+
+- (void) addCellChildView {
     [self.contentView addSubview:self.titleLabel];
+    [self.contentView addSubview:self.leftImageView];
+    [self.contentView addSubview:self.middleImageView];
+    [self.contentView addSubview:self.rightImageView];
+    [self.contentView addSubview:self.infoLabel];
+
+    [self layoutCellChildView];
+}
+
+- (void) layoutCellChildView {
+    CGFloat width = (HGSCREEN_WIDTH - 2 * (HGSizeManager.marginLeft +itemSpace)) / 3.0;
+    CGFloat imgH = 0.68 * width;
+
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_greaterThanOrEqualTo(20);
         make.left.top.equalTo(self.contentView).offset(10);
         make.right.equalTo(self.contentView).offset(-10);
     }];
     
-    [self.contentView addSubview:self.leftImageView];
-    [self.contentView addSubview:self.middleImageView];
-    [self.contentView addSubview:self.rightImageView];
+    
     [self.leftImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).offset(10);
         make.top.equalTo(self.titleLabel.mas_bottom).offset(4);
-        make.width.equalTo(@89);
-        make.height.equalTo(@66);
+        make.width.equalTo(@(width));
+        make.height.equalTo(@(imgH));
     }];
     [self.middleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.leftImageView.mas_right).offset(16);
         make.top.bottom.equalTo(self.leftImageView);
-        make.width.equalTo(@89);
-        make.height.equalTo(@66);
+        make.width.equalTo(@(width));
+        make.height.equalTo(@(imgH));
     }];
     [self.rightImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.middleImageView.mas_right).offset(16);
         make.top.bottom.equalTo(self.leftImageView);
-        make.right.equalTo(self.contentView).offset(-10);
-        make.height.equalTo(@66);
+        make.width.equalTo(@(width));
+        make.right.equalTo(self.contentView).offset(-HGSizeManager.marginRight);
+        make.height.equalTo(@(imgH));
     }];
     
-    [self.contentView addSubview:self.infoLabel];
     [self.infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_greaterThanOrEqualTo(20);
         make.left.equalTo(self.contentView).offset(10);
