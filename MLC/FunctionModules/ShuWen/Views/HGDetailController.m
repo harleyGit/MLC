@@ -8,6 +8,7 @@
 
 #import "HGDetailController.h"
 
+
 //, ZFPlayerDelegate 缺少
 @interface HGDetailController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -16,8 +17,13 @@
 @property(nonatomic, strong) NSMutableArray *datas;
 @property(nonatomic, weak) HGVideoListModel *playingModel;
 @property(nonatomic, strong)   ZFPlayerView *playerView;
+//缓存Cell高度
+@property(nonatomic, strong)NSMutableDictionary *heightIndexDic;
 
 @end
+
+//cell估算高度
+int const estimatedCellHeight = 150.0f;
 
 @implementation HGDetailController
 #pragma mark -- Get
@@ -31,6 +37,13 @@
 //        _playerView.stopPlayWhileCellNotVisable = YES;
     }
     return _playerView;
+}
+
+- (NSMutableDictionary *)heightIndexDic {
+    if (!_heightIndexDic) {
+        _heightIndexDic = [NSMutableDictionary dictionary];
+    }
+    return  _heightIndexDic;
 }
 
 - (NSMutableArray *)datas {
@@ -170,12 +183,18 @@
 
 
 #pragma mark -- UITableViewDelegate or  UITableViewDataSource
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.datas.count;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSNumber *height = @(cell.frame.size.height);
+    [self.heightIndexDic setObject:height forKey:indexPath];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -186,7 +205,7 @@
         if (!cell) {
             cell = [[HGHomeJokeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([HGHomeJokeCell class])];
         }
-        cell.model = model;
+//        cell.model = model;
         resultCell = cell;
     }else if ([self.model.category isEqualToString:@"组图"]){
         HGHomeNewsSummaryModel *model = self.datas[indexPath.row];
@@ -202,7 +221,7 @@
         if (!cell) {
             cell = [[HGVideoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([HGVideoCell class])];
         }
-        cell.model = model;
+//        cell.model = model;
         
         @weakify(self);
         [cell setImageViewCallBack:^(UIView * _Nonnull fatherView) {
@@ -237,7 +256,7 @@
             if (!cell) {
                 cell = [[HGHomeNewsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([HGHomeNewsCell class])];
             }
-            cell.model = model;
+//            cell.model = model;
             resultCell = cell;
         }else {
             HGContentNewsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HGContentNewsCell class])];
@@ -260,6 +279,20 @@
     }
 }
 
+
+//设置滚动时的预估值
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSNumber *height = [self.heightIndexDic objectForKey:indexPath];
+    if (height) {
+        return height.floatValue;
+    }else {
+        return estimatedCellHeight;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return  UITableViewAutomaticDimension;
+}
 
 #pragma mark -- playingModel
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {

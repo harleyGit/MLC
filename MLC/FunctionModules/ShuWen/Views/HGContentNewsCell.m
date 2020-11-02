@@ -45,6 +45,7 @@ static CGFloat itemSpace = 5;
 - (UILabel *)deitialLabel {
     if (!_deitialLabel) {
         _deitialLabel = [UILabel new];
+        _deitialLabel.font = [UIFont systemFontOfSize:12.0];
     }
     return _deitialLabel;
 }
@@ -53,7 +54,7 @@ static CGFloat itemSpace = 5;
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
+        [self addCellChildView];
     }
     
     return self;
@@ -62,6 +63,7 @@ static CGFloat itemSpace = 5;
 - (void)setModel:(HGHomeNewsSummaryModel *)model {
     _model = model;
     _titleLabel.text = model.infoModel.title;
+    _titleLabel.backgroundColor = UIColor.redColor;
     if (model.infoModel.middle_image) {
         CGFloat width = (HGSCREEN_WIDTH -20 -2 * itemSpace) / 3.0;
         _contentImageView.hidden = NO;
@@ -72,21 +74,35 @@ static CGFloat itemSpace = 5;
         _contentImageView.hidden = YES;
     }
     
+    _deitialLabel.backgroundColor = UIColor.yellowColor;
     _deitialLabel.text = [NSString stringWithFormat:@"%@   %d阅读  0分钟前",model.infoModel.media_name,model.infoModel.read_count];
 }
 
-- (void)layoutSubviews {
+- (void) addCellChildView {
     [self.contentView addSubview:self.titleLabel];
+    [self.contentView addSubview:self.deitialLabel];
+
+    [self layoutCellChildView];
+    
+}
+
+- (void) layoutCellChildView {
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.equalTo(self.contentView).offset(15);
+        make.left.top.equalTo(self.contentView).offset(HGSizeManager.marginLeft);
+        make.height.greaterThanOrEqualTo(@40);
+        make.right.equalTo(self.contentView).offset(-HGSizeManager.marginRight);
     }];
     
-    [self.contentView addSubview:self.deitialLabel];
     [self.deitialLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.titleLabel);
-        make.top.equalTo(self.deitialLabel.mas_bottom);
+        make.height.equalTo(@12);
+        make.top.equalTo(self.titleLabel.mas_bottom).offset(16);
+        make.right.equalTo(self.contentView).offset(-HGSizeManager.marginRight);
+        make.bottom.equalTo(self.contentView).offset(-HGSizeManager.marginBottom);
     }];
 }
+
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

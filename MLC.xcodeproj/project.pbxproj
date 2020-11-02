@@ -105,6 +105,7 @@
 		01E8544F21DB85EC007DD368 /* HGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E8544E21DB85EC007DD368 /* HGProgressView.m */; };
 		5F68A8DC9C769C953B228025 /* libPods-MLCTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEC0F65A0D9E7BB60366746 /* libPods-MLCTests.a */; };
 		6E62BA512425B70B00CC2B27 /* HGEncryptController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E62BA502425B70B00CC2B27 /* HGEncryptController.swift */; };
+		6E7F303E254D5A9D007C703D /* HGSizeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7F303D254D5A9D007C703D /* HGSizeManager.m */; };
 		6E88B52E241FAE8A00CBCBAD /* NSString+HGEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E88B52D241FAE8A00CBCBAD /* NSString+HGEncryption.m */; };
 		6E88B530241FC8B600CBCBAD /* XGExtension in Resources */ = {isa = PBXBuildFile; fileRef = 6E88B52F241FC8B600CBCBAD /* XGExtension */; };
 		6E88B543241FD8D000CBCBAD /* rsaPrivateCsr.csr in Resources */ = {isa = PBXBuildFile; fileRef = 6E88B53D241FD8CF00CBCBAD /* rsaPrivateCsr.csr */; };
@@ -337,6 +338,8 @@
 		5D30F27A582903F98FFE26D8 /* Pods-MLCUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLCUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MLCUITests/Pods-MLCUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5F43E78DFF07BD39E700A687 /* Pods-MLCTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLCTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MLCTests/Pods-MLCTests.release.xcconfig"; sourceTree = "<group>"; };
 		6E62BA502425B70B00CC2B27 /* HGEncryptController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HGEncryptController.swift; sourceTree = "<group>"; };
+		6E7F303C254D5A9D007C703D /* HGSizeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGSizeManager.h; sourceTree = "<group>"; };
+		6E7F303D254D5A9D007C703D /* HGSizeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGSizeManager.m; sourceTree = "<group>"; };
 		6E88B52C241FAE8A00CBCBAD /* NSString+HGEncryption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+HGEncryption.h"; sourceTree = "<group>"; };
 		6E88B52D241FAE8A00CBCBAD /* NSString+HGEncryption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+HGEncryption.m"; sourceTree = "<group>"; };
 		6E88B52F241FC8B600CBCBAD /* XGExtension */ = {isa = PBXFileReference; lastKnownFileType = folder; path = XGExtension; sourceTree = "<group>"; };
@@ -836,6 +839,8 @@
 				019EA14F20F6F64C0039DAAD /* Data */,
 				019EA14B20F6F6270039DAAD /* View */,
 				014CE9392113F52E00D8AECD /* Controllers */,
+				6E7F303C254D5A9D007C703D /* HGSizeManager.h */,
+				6E7F303D254D5A9D007C703D /* HGSizeManager.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1276,6 +1281,7 @@
 				6EF53D83244316B8006D40EF /* Button.ext.swift in Sources */,
 				01380CB921E2F6EB003A4230 /* HGRefreshGifHeader.m in Sources */,
 				013DAECA213E70C40088E691 /* HGSharePicture.m in Sources */,
+				6E7F303E254D5A9D007C703D /* HGSizeManager.m in Sources */,
 				014CE97821144C9600D8AECD /* HGFunctionVM.m in Sources */,
 				0142614821D89FDB009724A2 /* HGMenuView.m in Sources */,
 				01B98BB32116E85A008FBFF0 /* HGFunctionDetailVM.m in Sources */,

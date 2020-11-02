@@ -141,6 +141,7 @@
 #import "HGTools.h"
 #import "HGNavigationController.h"
 #import "HGCustomAliertView.h"
+#import "HGSizeManager.h"
 
 
 
