@@ -28,6 +28,8 @@ target 'MLC' do
   pod 'HandyJSON', '5.0.0'# Source:   Source: https://github.com/alibaba/HandyJSON.git
   #网络请求库：https://github.com/Moya/Moya
   pod 'Moya', '15.0.0-alpha.1'
+  #加密库：https://www.hangge.com/blog/cache/detail_910.html
+  pod 'Heimdall', '~> 2.0.1'
   
   
   #融云SDK
