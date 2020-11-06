@@ -25,26 +25,26 @@ printf("🍎 🍎 🍎 🍎"\
  *打印格式2
  */
 #define PrintFormat2(format, ...) \
-printf("🍎 🍎 🍎 🍎\n%d %s %s,  %s[%d]: " format "\n" "🍊 🍊 🍊 🍊\n\n", __STDC__, __DATE__, __TIME__, __FUNCTION__, __LINE__,  ##__VA_ARGS__)
+printf("\n🍎 🍎 🍎 🍎\n%d %s %s,  %s[%d]: " format "\n" "🍊 🍊 🍊 🍊\n\n", __STDC__, __DATE__, __TIME__, __FUNCTION__, __LINE__,  ##__VA_ARGS__)
 
 
 
 
 class Chapter6 {
     
+public:
     //二叉树结构体
     typedef struct BinaryTree {
         char value;
         struct BinaryTree *leftChild;
         struct BinaryTree *rightChild;
-    }BinaryTree;
-    
+    }BinaryTree, *BinaryTreeNode;
     //二叉树输入值
-    char characters[3] = "01";//"012#456##9";
+//    char characters[16] = "52##4##36##8##7";
+    char characters[24] = "ABDH#K###E##CFI###G#J##";
     //起始变量值
     int number = 0;
     
-public:
     /// P263  算法53： 数字在排序数组中出现的次数
     /// @param array 传递的数组
     /// @param num 指定的值
@@ -60,12 +60,12 @@ public:
     /// P269 算法54: 二叉搜索树的第 K 大节点
     /// @param index 第 index 节点
     /// @param rootNode 根结点指针变量
-    int  binaryTreeNodeSearch(int index, BinaryTree *rootNode);
+    char  binaryTreeNodeSearch(int index, BinaryTree *rootNode);
     
     
     /// 二叉树创建
     /// @param binaryTree 根结点指针
-    void createBinaryTree(BinaryTree *binaryTree, int index = 0);
+    void createBinaryTree(BinaryTreeNode *binaryTree, int index = 0);
     
 };
 
