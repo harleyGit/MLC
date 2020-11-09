@@ -12,10 +12,17 @@
 #include "string.h"
 
 
+
+Chapter6::BinaryTree *KthNodeCore(Chapter6::BinaryTree *pRoot, unsigned int& k);
+
+/**测试方法 start
+ *------------------------------------------------------------------------------------
+ */
+
 void  setTest(Chapter6::BinaryTreeNode *node);
 void  infixOrderTraverse(Chapter6::BinaryTreeNode *binaryTree);
 char  binaryTreeNodeSearch1(int index, Chapter6::BinaryTree *rootNode);
-Chapter6::BinaryTree *KthNodeCore(Chapter6::BinaryTree *pRoot, unsigned int& k);
+
 
 char  binaryTreeNodeSearch1(int index, Chapter6::BinaryTree *rootNode) {
     
@@ -42,6 +49,29 @@ char  binaryTreeNodeSearch1(int index, Chapter6::BinaryTree *rootNode) {
     
     return value;
 }
+
+//中序遍历
+void infixOrderTraverse(Chapter6::BinaryTreeNode *binaryTree){
+    if (*binaryTree == NULL) {
+        return;
+    }
+    
+    infixOrderTraverse(&(*binaryTree)->leftChild);
+    printf("--->>>%c\n",(*binaryTree)->value);
+    infixOrderTraverse(&(*binaryTree)->rightChild);
+    
+    return;
+}
+
+void  setTest(Chapter6::BinaryTreeNode *node){
+    *node = (Chapter6::BinaryTreeNode )malloc(sizeof(Chapter6::BinaryTreeNode));
+    printf("\n*node:%p, node:%p", *node, node);
+    (*node)->value = 'S';
+}
+
+/**测试方法 end
+ *------------------------------------------------------------------------------------
+ */
 
 
 
@@ -88,25 +118,6 @@ void Chapter6:: chapter6Run() {
     
 }
 
-
-//中序遍历
-void infixOrderTraverse(Chapter6::BinaryTreeNode *binaryTree){
-    if (*binaryTree == NULL) {
-        return;
-    }
-    
-    infixOrderTraverse(&(*binaryTree)->leftChild);
-    printf("--->>>%c\n",(*binaryTree)->value);
-    infixOrderTraverse(&(*binaryTree)->rightChild);
-    
-    return;
-}
-
-void  setTest(Chapter6::BinaryTreeNode *node){
-    *node = (Chapter6::BinaryTreeNode )malloc(sizeof(Chapter6::BinaryTreeNode));
-    printf("\n*node:%p, node:%p", *node, node);
-    (*node)->value = 'S';
-}
 
 //实现处把默认值省略
 int Chapter6:: getSpecifyNumCount(int *array, int num, int endIndex, int startIndex) {
