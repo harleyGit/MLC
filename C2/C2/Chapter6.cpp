@@ -13,108 +13,75 @@
 
 
 void  setTest(Chapter6::BinaryTreeNode *node);
-void infixOrderTraverse(Chapter6::BinaryTreeNode *binaryTree);
-void   binaryTreeNodeSearch1(int index, Chapter6::BinaryTree *rootNode);
+void  infixOrderTraverse(Chapter6::BinaryTreeNode *binaryTree);
+char  binaryTreeNodeSearch1(int index, Chapter6::BinaryTree *rootNode);
+Chapter6::BinaryTree *KthNodeCore(Chapter6::BinaryTree *pRoot, unsigned int& k);
 
-
-
-
-Chapter6::BinaryTree *KthNodeCore(Chapter6::BinaryTree *pRoot, unsigned int& k) {
+char  binaryTreeNodeSearch1(int index, Chapter6::BinaryTree *rootNode) {
     
-    Chapter6::BinaryTree *target = nullptr;
+    char value = '0';
     
-    if (pRoot->leftChild != nullptr) {
-        target = KthNodeCore((pRoot->leftChild), k);
+    if (rootNode == NULL) {
+        return '0';
     }
     
-    if(target == nullptr) {
-        if (k == 1) {
-            target = pRoot;
-        }
-        k--;
-    }
-    //PrintFormat2("-->> %c", pRoot->value);
-//
-    if (target == nullptr && pRoot->rightChild != nullptr) {
-        target = KthNodeCore(pRoot->rightChild, k);
+    if (rootNode->leftChild != NULL) {
+        value = binaryTreeNodeSearch1(index, rootNode->leftChild);
     }
     
-    return target;
+    if (index == 1) {
+        value = rootNode->value;
+        //    printf("---->> %c\n", rootNode->value);
+    }
+    index --;
     
-}
-
-Chapter6::BinaryTree *kthNode(Chapter6::BinaryTree *pRoot, unsigned int k) {
-    if (pRoot == NULL || k == 0) {
-        return nullptr;
+    
+    if (rootNode->rightChild != NULL) {
+        value = binaryTreeNodeSearch1(index, rootNode->rightChild);
     }
     
-    return KthNodeCore(pRoot, k);
+    return value;
 }
 
 
 
-
-int num = 0;
-char chrac[24] = "ABDH#K###E##CFI###G#J##";
-//创建二叉树
-void createBinaryTree(Chapter6::BinaryTree *binaryTree, int index) {
-    char data = chrac[num++];
-    
-    if (data == '#' || data == '\0') {
-        //当其设置为NULL时，其右子树的指针容易变为野指针导致错误
-        binaryTree = NULL;
-    }else {
-        //if (*binaryTree == NULL) {//不要加判断否则程序crash
-            //malloc 函数返回的是 void * 类型，如果你写成：p = malloc (sizeof(int)); 则程序无法通过编译，报错：“不能将 void* 赋值给 int * 类型变量”。所以必须通过 (int *) 来将强制转换。
-            binaryTree = (Chapter6::BinaryTree *)malloc(sizeof(Chapter6::BinaryTree));
-        //}
-        if (!(binaryTree)) {
-            exit(OVERFLOW);
-        }
-
-        binaryTree->value = data;
-        createBinaryTree(binaryTree->leftChild,++index);
-        //当 (*binaryTree)->rightChild 递归设置为NULL，返会再次打印 (*binaryTree)->rightChild 其值时，发现已经有值了，它的指针变为野指针了
-        createBinaryTree(binaryTree->rightChild, ++index);
-    }
-    
-}
 
 void Chapter6:: chapter6Run() {
     
     /*
-    int array[7] = {1, 1, 2, 3, 4, 4, 4};
-    int index = this->getSpecifyNumCount( array, 1, 6);
-    PrintFormat1("%d", index);
-    */
+     int array[7] = {1, 1, 2, 3, 4, 4, 4};
+     int index = this->getSpecifyNumCount( array, 1, 6);
+     PrintFormat1("%d", index);
+     */
     
     PrintFormat2("%s 💣 💣 💣 💣 💣 💣 💣 💣 💣 💣 💣 💣", "=============================");
     
     
     
     
-//    BinaryTreeNode treeNode = NULL;
-//    //BinaryTreeNode 为指针结构体相当于 BinaryTree*
-//    PrintFormat2("treeNode 地址为：%p, &treeNode 地址为：%p", treeNode, &treeNode);
-//    setTest(&treeNode);
-//    PrintFormat2("data:%c, binaryTree:%p, &binaryTree:%p", treeNode->value, treeNode, &treeNode);
-
+    //    BinaryTreeNode treeNode = NULL;
+    //    //BinaryTreeNode 为指针结构体相当于 BinaryTree*
+    //    PrintFormat2("treeNode 地址为：%p, &treeNode 地址为：%p", treeNode, &treeNode);
+    //    setTest(&treeNode);
+    //    PrintFormat2("data:%c, binaryTree:%p, &binaryTree:%p", treeNode->value, treeNode, &treeNode);
+    
     
     
     //结构体指针需要申请内存空间才可以使用
     BinaryTree *binaryTree = NULL;//(BinaryTree *)malloc(sizeof(BinaryTree));
-//    PrintFormat2("BinaryTree 字节数为：%lu", sizeof(binaryTree));
-//    binaryTree->value = '0';
-//    PrintFormat2("赋值前：value: %c, leftNode:%p, rightNode: %p", binaryTree->value, binaryTree->leftChild, binaryTree->rightChild);
-
+    //    PrintFormat2("BinaryTree 字节数为：%lu", sizeof(binaryTree));
+    //    binaryTree->value = '0';
+    //    PrintFormat2("赋值前：value: %c, leftNode:%p, rightNode: %p", binaryTree->value, binaryTree->leftChild, binaryTree->rightChild);
+    
     this->createBinaryTree(&binaryTree);
     PrintFormat2("赋值后：value: %c, leftNode:%p, rightNode: %p", binaryTree->value, binaryTree->leftChild, binaryTree->rightChild);
-    BinaryTree *searchNode = kthNode(binaryTree, 4);
+    
+    BinaryTree *searchNode = this->kthNode(binaryTree, 4);
     PrintFormat2("%c", searchNode->value);
-//    infixOrderTraverse(&binaryTree);
-//    int nodeValue = this->
-//    binaryTreeNodeSearch1(3, binaryTree);
-//    PrintFormat2("第 3 大节点value = %c", nodeValue);
+    //    infixOrderTraverse(&binaryTree);
+    //    int nodeValue = this->
+    //    char nodeValue = binaryTreeNodeSearch1(4, binaryTree);
+    //    PrintFormat2("第 4 大节点value = %c", nodeValue);
     
     
     
@@ -174,7 +141,7 @@ int Chapter6:: getSpecifyNumCount(int *array, int num, int endIndex, int startIn
     return  getSpecifyNumCount(array, num, endIndex, startIndex);
 }
 
-int number = 0;
+
 //创建二叉树
 void Chapter6:: createBinaryTree(BinaryTreeNode *binaryTree, int index) {
     char data = characters[number++];
@@ -184,13 +151,13 @@ void Chapter6:: createBinaryTree(BinaryTreeNode *binaryTree, int index) {
         *binaryTree = NULL;
     }else {
         //if (*binaryTree == NULL) {//不要加判断否则程序crash
-            //malloc 函数返回的是 void * 类型，如果你写成：p = malloc (sizeof(int)); 则程序无法通过编译，报错：“不能将 void* 赋值给 int * 类型变量”。所以必须通过 (int *) 来将强制转换。
-            *binaryTree = (BinaryTree*)malloc(sizeof(BinaryTree));
+        //malloc 函数返回的是 void * 类型，如果你写成：p = malloc (sizeof(int)); 则程序无法通过编译，报错：“不能将 void* 赋值给 int * 类型变量”。所以必须通过 (int *) 来将强制转换。
+        *binaryTree = (BinaryTree*)malloc(sizeof(BinaryTree));
         //}
         if (!(*binaryTree)) {
             exit(OVERFLOW);
         }
-
+        
         (*binaryTree)->value = data;
         createBinaryTree(&(*binaryTree)->leftChild,++index);
         //当 (*binaryTree)->rightChild 递归设置为NULL，返会再次打印 (*binaryTree)->rightChild 其值时，发现已经有值了，它的指针变为野指针了
@@ -200,33 +167,35 @@ void Chapter6:: createBinaryTree(BinaryTreeNode *binaryTree, int index) {
 }
 
 
-void   binaryTreeNodeSearch1(int index, Chapter6::BinaryTree *rootNode) {
+Chapter6::BinaryTree *KthNodeCore(Chapter6::BinaryTree *pRoot, unsigned int& k) {
     
-    char value = '0';
+    Chapter6::BinaryTree *target = nullptr;
     
-//    if (rootNode == NULL) {
-//        return;
-//    }
-    
-    if (rootNode->leftChild != NULL) {
-        binaryTreeNodeSearch1(index, rootNode->leftChild);
+    if (pRoot->leftChild != nullptr) {
+        target = KthNodeCore((pRoot->leftChild), k);
     }
     
-//    if (index == 1) {
-//        value = rootNode->value;
-    printf("---->> %c\n", rootNode->value);
-//    }
-//    index --;
-   
-    
-    if (rootNode->rightChild != NULL) {
-        binaryTreeNodeSearch1(index, rootNode->rightChild);
+    if(target == nullptr) {
+        if (k == 1) {
+            target = pRoot;
+        }
+        k--;
     }
     
-    return ;
-//    return ' ';
+    if (target == nullptr && pRoot->rightChild != nullptr) {
+        target = KthNodeCore(pRoot->rightChild, k);
+    }
+    
+    return target;
+    
 }
 
-
+Chapter6::BinaryTree * Chapter6:: kthNode(Chapter6::BinaryTree *pRoot, unsigned int k) {
+    if (pRoot == NULL || k == 0) {
+        return nullptr;
+    }
+    
+    return KthNodeCore(pRoot, k);
+}
 
 

@@ -45,6 +45,8 @@ public:
     //起始变量值
     int number = 0;
     
+    
+    
     /// P263  算法53： 数字在排序数组中出现的次数
     /// @param array 传递的数组
     /// @param num 指定的值
@@ -58,14 +60,15 @@ public:
     
     
     /// P269 算法54: 二叉搜索树的第 K 大节点
-    /// @param index 第 index 节点
-    /// @param rootNode 根结点指针变量
-    char  binaryTreeNodeSearch(int index, BinaryTree *rootNode);
+    /// @param k 第 k 节点
+    /// @param pRoot 根结点指针变量
+    BinaryTree *kthNode(BinaryTree *pRoot, unsigned int k);
     
     
     /// 二叉树创建
     /// @param binaryTree 根结点指针
     void createBinaryTree(BinaryTreeNode *binaryTree, int index = 0);
+
     
 };
 
