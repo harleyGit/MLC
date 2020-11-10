@@ -96,7 +96,7 @@ void Chapter6:: chapter6Run() {
     //    PrintFormat2("data:%c, binaryTree:%p, &binaryTree:%p", treeNode->value, treeNode, &treeNode);
     
     
-    
+    /* 二叉搜索树的第 K 大节点
     //结构体指针需要申请内存空间才可以使用
     BinaryTree *binaryTree = NULL;//(BinaryTree *)malloc(sizeof(BinaryTree));
     //    PrintFormat2("BinaryTree 字节数为：%lu", sizeof(binaryTree));
@@ -113,9 +113,60 @@ void Chapter6:: chapter6Run() {
     //    char nodeValue = binaryTreeNodeSearch1(4, binaryTree);
     //    PrintFormat2("第 4 大节点value = %c", nodeValue);
     
+    */
     
     
+}
+
+
+
+int leftDepth = 1;
+int rightDepth = 1;
+
+
+
+int Chapter6:: getBinaryTreeDepth(BinaryTree *rootTree, int depth) {
     
+    if (rootTree == nullptr) {
+        return 0;
+    }
+    
+    if (rootTree->leftChild != nullptr) {
+        leftDepth ++;
+        this->getBinaryTreeDepth(rootTree->leftChild, depth);
+    }
+    
+    
+    if (rootTree->rightChild != nullptr) {
+        depth ++;
+        this->getBinaryTreeDepth(rootTree->rightChild, depth);
+    }
+    
+    return  0;
+}
+
+//我写的二叉树深度
+int  binaryDepth() {
+    Chapter6 chap6;
+    Chapter6:: BinaryTree *rootTree;
+    
+    int leftD = chap6.getBinaryTreeDepth(rootTree->leftChild, 0);
+    int rightD = chap6.getBinaryTreeDepth(rootTree->rightChild, 0);
+
+    return  leftD > rightD ? leftD : rightD;
+
+}
+
+int Chapter6:: getBinaryTreeDepth(BinaryTree *rootNode) {
+    if (rootNode == nullptr) {
+        return  0;
+    }
+    
+    int leftDep= this->getBinaryTreeDepth(rootNode->leftChild);
+    int rightDep = this->getBinaryTreeDepth(rootNode->rightChild);
+    
+    
+    return (leftDepth>rightDep) ? (leftDepth+1) : (rightDep+1);
 }
 
 

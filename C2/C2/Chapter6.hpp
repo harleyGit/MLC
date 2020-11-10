@@ -46,6 +46,13 @@ public:
     int number = 0;
     
     
+    //我写的
+    int getBinaryTreeDepth(BinaryTree *rootTree, int depth);
+    
+    
+    /// page272: 55 获取二叉树的深度
+    /// @param rootNode 根结点
+    int getBinaryTreeDepth(BinaryTree *rootNode);
     
     /// P263  算法53： 数字在排序数组中出现的次数
     /// @param array 传递的数组
