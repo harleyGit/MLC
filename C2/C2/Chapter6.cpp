@@ -79,14 +79,27 @@ void  setTest(Chapter6::BinaryTreeNode *node){
 void Chapter6:: chapter6Run() {
     
     /*
+    int result1, result2;
+    int data[8] = {2, 4, 3, 6, 3, 2, 5, 5};
+    this->findNumsAppearOnce("面试题56：数组中数字出现次数", data, sizeof(data)/sizeof(int), &result1, &result2);
+    PrintFormat2("result1: %d, result2: %d", result1, result2);
+    */
+    
+    /**
+     *二叉树的深度
+     */
+    /*
+    BinaryTree *binaryTree = nullptr;
+    this->createBinaryTree(&binaryTree);
+    int depth = this->getBinaryTreeDepth(binaryTree);
+    PrintFormat2("二叉树的深度为： %d", depth);
+    */
+    
+    /*
      int array[7] = {1, 1, 2, 3, 4, 4, 4};
      int index = this->getSpecifyNumCount( array, 1, 6);
      PrintFormat1("%d", index);
      */
-    
-    PrintFormat2("%s 💣 💣 💣 💣 💣 💣 💣 💣 💣 💣 💣 💣", "=============================");
-    
-    
     
     
     //    BinaryTreeNode treeNode = NULL;
@@ -120,43 +133,60 @@ void Chapter6:: chapter6Run() {
 
 
 
-int leftDepth = 1;
-int rightDepth = 1;
-
-
-
-int Chapter6:: getBinaryTreeDepth(BinaryTree *rootTree, int depth) {
-    
-    if (rootTree == nullptr) {
-        return 0;
-    }
-    
-    if (rootTree->leftChild != nullptr) {
-        leftDepth ++;
-        this->getBinaryTreeDepth(rootTree->leftChild, depth);
-    }
-    
-    
-    if (rootTree->rightChild != nullptr) {
-        depth ++;
-        this->getBinaryTreeDepth(rootTree->rightChild, depth);
-    }
-    
-    return  0;
+/// 判断在num的二进制表示中从右边数起的indexBit位是不是1
+/// @param num <#num description#>
+/// @param indexBit <#indexBit description#>
+bool isBit1(int num, unsigned int indexBit) {
+    num = num >> indexBit;
+    return (num & 1);
 }
 
-//我写的二叉树深度
-int  binaryDepth() {
-    Chapter6 chap6;
-    Chapter6:: BinaryTree *rootTree;
+void Chapter6:: findNumsAppearOnce(const char *name, int data[], int length, int *num1, int *num2) {
     
-    int leftD = chap6.getBinaryTreeDepth(rootTree->leftChild, 0);
-    int rightD = chap6.getBinaryTreeDepth(rootTree->rightChild, 0);
-
-    return  leftD > rightD ? leftD : rightD;
-
+    if (name != nullptr) {
+        PrintFormat2("%s", name);
+    }
+    
+    if (data == nullptr || length < 2) {
+        return;
+    }
+    
+    //异或运算：0 ^ 0 = 0, 0 ^ 1 = 1, 1 ^ 0 = 1, 1 ^ 1 = 0
+    int resultExclusiveOR = 0;
+    for (int i = 0; i < length; i ++) {
+        resultExclusiveOR ^= data[i];
+        PrintFormat1("%d", resultExclusiveOR);
+    }
+    
+    unsigned int indexOf1 = findFirstBitIs1(resultExclusiveOR);
+    
+    *num1 = *num2 = 0;
+    for (int j = 0; j < length;  ++j) {
+        if (isBit1(data[j], indexOf1)) {
+            *num1 ^= data[j];
+        }else {
+            *num2 ^= data[j];
+        }
+    }
+    
 }
 
+unsigned int Chapter6::findFirstBitIs1(int num) {
+    
+    int indexBit = 0;
+    while (((num & 1) == 0) && (indexBit < 8 * sizeof(int))) {
+        num = num >> 1;
+        ++ indexBit;
+    }
+    return  indexBit;
+}
+
+
+
+
+
+
+//二叉树深度
 int Chapter6:: getBinaryTreeDepth(BinaryTree *rootNode) {
     if (rootNode == nullptr) {
         return  0;
@@ -166,7 +196,7 @@ int Chapter6:: getBinaryTreeDepth(BinaryTree *rootNode) {
     int rightDep = this->getBinaryTreeDepth(rootNode->rightChild);
     
     
-    return (leftDepth>rightDep) ? (leftDepth+1) : (rightDep+1);
+    return (leftDep>rightDep) ? (leftDep+1) : (rightDep+1);
 }
 
 

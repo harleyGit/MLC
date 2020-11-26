@@ -41,29 +41,32 @@ public:
     }BinaryTree, *BinaryTreeNode;
     //二叉树输入值
 //    char characters[16] = "52##4##36##8##7";
-    char characters[24] = "ABDH#K###E##CFI###G#J##";
+//    char characters[24] = "ABDH#K###E##CFI###G#J##";
+    char characters[10] = "AB#D##";
     //起始变量值
     int number = 0;
     
     
-    //我写的
-    int getBinaryTreeDepth(BinaryTree *rootTree, int depth);
+    //函数调用算法
+    void chapter6Run();
+    
+    
+    
+    
+    /// page275: 56 数组中数字出现的次数
+    /// 用来在num的二进制表示中找到最右边是1的位
+    /// @param data 数组
+    /// @param length 长度
+    /// @param num1 数字1
+    /// @param num2 数字2
+    void findNumsAppearOnce(const char *name, int data[], int length, int *num1, int *num2);
+    //返回无符号整型
+    unsigned int findFirstBitIs1(int num);
     
     
     /// page272: 55 获取二叉树的深度
     /// @param rootNode 根结点
     int getBinaryTreeDepth(BinaryTree *rootNode);
-    
-    /// P263  算法53： 数字在排序数组中出现的次数
-    /// @param array 传递的数组
-    /// @param num 指定的值
-    /// @param endIndex 数组终止索引
-    /// @param startIndex 数组起始索引，默认值为0，放在最后规定
-    int getSpecifyNumCount(int *array, int num, int endIndex, int startIndex = 0);
-    
-    
-    //函数调用算法
-    void chapter6Run();
     
     
     /// P269 算法54: 二叉搜索树的第 K 大节点
@@ -71,6 +74,13 @@ public:
     /// @param pRoot 根结点指针变量
     BinaryTree *kthNode(BinaryTree *pRoot, unsigned int k);
     
+    
+    /// P263  算法53： 数字在排序数组中出现的次数
+    /// @param array 传递的数组
+    /// @param num 指定的值
+    /// @param endIndex 数组终止索引
+    /// @param startIndex 数组起始索引，默认值为0，放在最后规定
+    int getSpecifyNumCount(int *array, int num, int endIndex, int startIndex = 0);
     
     /// 二叉树创建
     /// @param binaryTree 根结点指针
