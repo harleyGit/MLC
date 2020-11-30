@@ -40,8 +40,8 @@ public:
         struct BinaryTree *rightChild;
     }BinaryTree, *BinaryTreeNode;
     //二叉树输入值
-//    char characters[16] = "52##4##36##8##7";
-//    char characters[24] = "ABDH#K###E##CFI###G#J##";
+    //    char characters[16] = "52##4##36##8##7";
+    //    char characters[24] = "ABDH#K###E##CFI###G#J##";
     char characters[10] = "AB#D##";
     //起始变量值
     int number = 0;
@@ -51,7 +51,7 @@ public:
     void chapter6Run();
     
     
-    
+    void question57_1(char* questionName, int array[], int value, int size = 6);
     
     /// page275: 56 数组中数字出现的次数
     /// 用来在num的二进制表示中找到最右边是1的位
@@ -85,7 +85,7 @@ public:
     /// 二叉树创建
     /// @param binaryTree 根结点指针
     void createBinaryTree(BinaryTreeNode *binaryTree, int index = 0);
-
+    
     
 };
 

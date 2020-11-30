@@ -20,10 +20,13 @@
 
 
 
+
+
 void testMethod_1();
 
 int main(int argc, const char * argv[]) {
     
+   
     
     Chapter6 chapter6;
     chapter6.chapter6Run();
@@ -38,12 +41,12 @@ int main(int argc, const char * argv[]) {
 
 void testMethod_1() {
     /*
-    int val = 5;
-    int *prt3 = (int *)0x1000;
-    prt3 = &val;
-    std::cout<<"prt3值为："<<*prt3<<"地址为："<<&prt3<<std::endl;
-    std::cout<<"val值为："<<val<<"地址为："<<&val<<std::endl;
-    
+     int val = 5;
+     int *prt3 = (int *)0x1000;
+     prt3 = &val;
+     std::cout<<"prt3值为："<<*prt3<<"地址为："<<&prt3<<std::endl;
+     std::cout<<"val值为："<<val<<"地址为："<<&val<<std::endl;
+     
      */
     
     
@@ -89,6 +92,9 @@ void testMethod_1() {
     
     printf("\n\n%s","✈️ 🦊 🐱 😊 🏠 ⛽️ 💲 💶 🐂 🌟 🚀 🏆");
 }
+
+
+
 
 
 

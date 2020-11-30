@@ -78,22 +78,29 @@ void  setTest(Chapter6::BinaryTreeNode *node){
 
 void Chapter6:: chapter6Run() {
     
+    char questionName[] = "和为S的数字";
+    int array[] = {1, 2, 4, 7, 11, 15};
+    //计算数组长度或者 int length = sizeof(array)/sizeof(array[0]);
+    int length = sizeof(array)/sizeof(int);
+    question57_1(questionName, array, 15);
+    
+    
     /*
-    int result1, result2;
-    int data[8] = {2, 4, 3, 6, 3, 2, 5, 5};
-    this->findNumsAppearOnce("面试题56：数组中数字出现次数", data, sizeof(data)/sizeof(int), &result1, &result2);
-    PrintFormat2("result1: %d, result2: %d", result1, result2);
-    */
+     int result1, result2;
+     int data[8] = {2, 4, 3, 6, 3, 2, 5, 5};
+     this->findNumsAppearOnce("面试题56：数组中数字出现次数", data, sizeof(data)/sizeof(int), &result1, &result2);
+     PrintFormat2("result1: %d, result2: %d", result1, result2);
+     */
     
     /**
      *二叉树的深度
      */
     /*
-    BinaryTree *binaryTree = nullptr;
-    this->createBinaryTree(&binaryTree);
-    int depth = this->getBinaryTreeDepth(binaryTree);
-    PrintFormat2("二叉树的深度为： %d", depth);
-    */
+     BinaryTree *binaryTree = nullptr;
+     this->createBinaryTree(&binaryTree);
+     int depth = this->getBinaryTreeDepth(binaryTree);
+     PrintFormat2("二叉树的深度为： %d", depth);
+     */
     
     /*
      int array[7] = {1, 1, 2, 3, 4, 4, 4};
@@ -110,27 +117,70 @@ void Chapter6:: chapter6Run() {
     
     
     /* 二叉搜索树的第 K 大节点
-    //结构体指针需要申请内存空间才可以使用
-    BinaryTree *binaryTree = NULL;//(BinaryTree *)malloc(sizeof(BinaryTree));
-    //    PrintFormat2("BinaryTree 字节数为：%lu", sizeof(binaryTree));
-    //    binaryTree->value = '0';
-    //    PrintFormat2("赋值前：value: %c, leftNode:%p, rightNode: %p", binaryTree->value, binaryTree->leftChild, binaryTree->rightChild);
-    
-    this->createBinaryTree(&binaryTree);
-    PrintFormat2("赋值后：value: %c, leftNode:%p, rightNode: %p", binaryTree->value, binaryTree->leftChild, binaryTree->rightChild);
-    
-    BinaryTree *searchNode = this->kthNode(binaryTree, 4);
-    PrintFormat2("%c", searchNode->value);
-    //    infixOrderTraverse(&binaryTree);
-    //    int nodeValue = this->
-    //    char nodeValue = binaryTreeNodeSearch1(4, binaryTree);
-    //    PrintFormat2("第 4 大节点value = %c", nodeValue);
-    
-    */
+     //结构体指针需要申请内存空间才可以使用
+     BinaryTree *binaryTree = NULL;//(BinaryTree *)malloc(sizeof(BinaryTree));
+     //    PrintFormat2("BinaryTree 字节数为：%lu", sizeof(binaryTree));
+     //    binaryTree->value = '0';
+     //    PrintFormat2("赋值前：value: %c, leftNode:%p, rightNode: %p", binaryTree->value, binaryTree->leftChild, binaryTree->rightChild);
+     
+     this->createBinaryTree(&binaryTree);
+     PrintFormat2("赋值后：value: %c, leftNode:%p, rightNode: %p", binaryTree->value, binaryTree->leftChild, binaryTree->rightChild);
+     
+     BinaryTree *searchNode = this->kthNode(binaryTree, 4);
+     PrintFormat2("%c", searchNode->value);
+     //    infixOrderTraverse(&binaryTree);
+     //    int nodeValue = this->
+     //    char nodeValue = binaryTreeNodeSearch1(4, binaryTree);
+     //    PrintFormat2("第 4 大节点value = %c", nodeValue);
+     
+     */
     
     
 }
 
+
+void Chapter6:: question57_1(char* questionName, int array[], int value, int size) {
+    
+    PrintFormat2("%s", questionName);
+    
+    /*
+     C/C++ 传递数组，虽然传递的是首地址地址，但是参数到了函数内
+     就成了普通指针，不再是数组首地址了，所以试图在别的函数中得到
+     传递数组的长度是行不通的。
+     只能先计算好长度后再传过去，进行其他的运算。
+     */
+    //int count = sizeof(array)/sizeof(int) - 1;
+    int count = size - 1;
+    
+    if (array == nullptr && count < 2) {
+        return;
+    }
+    
+    int *firstP = nullptr;
+    int *lastP = nullptr;
+    int i = 0;
+    
+    firstP = array;
+    //数组值 = 数组首地址 + 个数
+    lastP = array+count;
+    
+    while (i < count) {
+        int sum = *firstP + *lastP;
+        if (sum < value) {
+            ++i;
+            firstP = (array+i);
+        }else if (sum > value) {
+            --count;
+            lastP = (array+count);
+        }else {
+            PrintFormat2("第一个： %d", *firstP);
+            PrintFormat2("第二个： %d", *lastP);
+            
+            break;
+        }
+    }
+    
+}
 
 
 /// 判断在num的二进制表示中从右边数起的indexBit位是不是1
