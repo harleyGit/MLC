@@ -15,6 +15,8 @@ target 'MLC' do
   pod 'SDWebImage', '5.7.3'
   #路由导航：http://github.com/mogujie/MGJRouter
   pod 'MGJRouter', '0.10.0'
+  #AsyncDisplayKit（以下简称 ASDK）是Facebook开源的一个 iOS 框架，能够帮助最复杂的 UI 界面保持流畅和快速响应
+  #pod 'AsyncDisplayKit', '~> 2.2.1'
   
   #Swift
   #RxSwift: Homepage: https://github.com/ReactiveX/RxSwift

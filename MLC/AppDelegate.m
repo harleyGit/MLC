@@ -26,11 +26,14 @@
     self.window.rootViewController = [HGRootController new];
     [self.window makeKeyAndVisible];
     
+    /*
+    //微博授权页验证
     HGUserManager *um = [HGUserManager sharedInstance];
     if ([HGTools isBlankForString:um.access_token]) {
         HGAuthorizeLoginView *alc = [[HGAuthorizeLoginView alloc] initWithFrame: [UIScreen mainScreen].bounds];
         [alc show];
     }
+     */
     
     [AppDelegate weixinShareRegister];
     

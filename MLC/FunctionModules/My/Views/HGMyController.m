@@ -78,7 +78,10 @@ static NSString *const cellID = @"HGMyTableCell";
     NSString *uid = um.uid;
     HGNetworking *nw = [HGNetworking shareInstance];
     nw.delegate = self;
-    
+    if (uid == nil || access_token == nil) {
+        SLog(@"崩溃，没有微博的token数据");
+        return;
+    }
     [HGNetworking requestMethodType:RequestMethodTypeGet url:[HGWeiBoPortManager users_show] parameters:@{@"access_token": access_token, @"uid": uid}];
 }
 
