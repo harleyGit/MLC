@@ -7,7 +7,6 @@
 
 #ifndef Chapter6_hpp
 #define Chapter6_hpp
-
 #include <stdio.h>
 
 /**
@@ -42,7 +41,7 @@ public:
     //二叉树输入值
     //    char characters[16] = "52##4##36##8##7";
     //    char characters[24] = "ABDH#K###E##CFI###G#J##";
-    char characters[10] = "AB#D##";
+    //char characters[10] = "AB#D##";
     //起始变量值
     int number = 0;
     
@@ -51,17 +50,9 @@ public:
     void chapter6Run();
     
     
-    void question57_1(char* questionName, int array[], int value, int size = 6);
     
-    /// page275: 56 数组中数字出现的次数
-    /// 用来在num的二进制表示中找到最右边是1的位
-    /// @param data 数组
-    /// @param length 长度
-    /// @param num1 数字1
-    /// @param num2 数字2
-    void findNumsAppearOnce(const char *name, int data[], int length, int *num1, int *num2);
-    //返回无符号整型
-    unsigned int findFirstBitIs1(int num);
+    
+    
     
     
     /// page272: 55 获取二叉树的深度
