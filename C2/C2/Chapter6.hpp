@@ -41,29 +41,11 @@ public:
     //二叉树输入值
     //    char characters[16] = "52##4##36##8##7";
     //    char characters[24] = "ABDH#K###E##CFI###G#J##";
-    //char characters[10] = "AB#D##";
+    char characters[10] = "AB#D##C##";
     //起始变量值
     int number = 0;
     
     
-    //函数调用算法
-    void chapter6Run();
-    
-    
-    
-    
-    
-    
-    
-    /// page272: 55 获取二叉树的深度
-    /// @param rootNode 根结点
-    int getBinaryTreeDepth(BinaryTree *rootNode);
-    
-    
-    /// P269 算法54: 二叉搜索树的第 K 大节点
-    /// @param k 第 k 节点
-    /// @param pRoot 根结点指针变量
-    BinaryTree *kthNode(BinaryTree *pRoot, unsigned int k);
     
     
     /// P263  算法53： 数字在排序数组中出现的次数

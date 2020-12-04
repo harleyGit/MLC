@@ -23,82 +23,18 @@
 
 
 void testMethod_1();
-/*
-void reverseString(char *beginP, char *endP) {
-    if (beginP == nullptr || endP == nullptr) {
-        PrintFormat2("beginP 为 nullptr，或者 endP 为 null");
-        return;
-    }
-    
-    while (beginP < endP) {
-        char tempVar = *beginP;
-        *beginP = *endP;
-        *endP = tempVar;
-        
-        beginP++;
-        endP--;
-    }
-}
-
-char *reverseSentence(char *questionName,char *sentence) {
-
-    if (questionName != nullptr) {
-        PrintFormat2("题目： %s", questionName);
-    }
-    
-    if (sentence == nullptr) {
-        return  nullptr;
-    }
-    
-    
-    char *beginP = sentence;
-    char *endP = sentence;
-    
-    while (*endP != '\0') {
-        //指针地址偏移
-        endP ++;
-    }
-    
-    endP--;
-    
-    //翻转整个字符串
-    reverseString(beginP, endP);
-    
-    PrintFormat2("---->> %s", sentence);
-    
-    //重置为字符串的首字母
-    beginP= endP = sentence;
-    
-    
-    while (*beginP != '\0') {//首指针不为空，则句子没结束
-        if (*beginP == ' ') {//为空
-            beginP ++;//指向下一个元素地址
-            endP ++;//指向下一个元素地址
-        }else if (*endP == ' ' || *endP == '\0') {
-            reverseString(beginP, --endP);//翻转一个单词
-            beginP = ++endP;//首指针和尾指针指向下一个单词首字母
-        }else {
-            endP ++;//指向下一个元素地址
-        }
-    }
-    
-    return  sentence;
-    
-    
-}
-*/
-
-
 
 int main(int argc, const char * argv[]) {
     
    
     Chapter6 chapter6;
     
+     int array[7] = {1, 1, 2, 3, 4, 4, 4};
+     int index = chapter6.getSpecifyNumCount( array, 1, 7);
+     PrintFormat2("次数：%d", index);
     
     
-    
-    chapter6.chapter6Run();
+    //chapter6.chapter6Run();
    
     //testMethod_1();
     
