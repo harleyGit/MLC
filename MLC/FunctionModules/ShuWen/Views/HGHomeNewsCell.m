@@ -109,7 +109,7 @@ static CGFloat itemSpace = 5;
 }
 
 - (void) layoutCellChildView {
-    CGFloat width = (HGSCREEN_WIDTH - 2 * (HGSizeManager.marginLeft +itemSpace)) / 3.0;
+    CGFloat width = (HGSCREEN_WIDTH - 2 * (HGSizeManager.marginLeft + itemSpace)) / 3.0;
     CGFloat imgH = 0.68 * width;
 
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -120,22 +120,21 @@ static CGFloat itemSpace = 5;
     
     
     [self.leftImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView).offset(10);
+        make.left.equalTo(self.contentView).offset(HGSizeManager.marginLeft);
         make.top.equalTo(self.titleLabel.mas_bottom).offset(4);
         make.width.equalTo(@(width));
         make.height.equalTo(@(imgH));
     }];
     [self.middleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.leftImageView.mas_right).offset(16);
+        make.left.equalTo(self.leftImageView.mas_right).offset(itemSpace);
         make.top.bottom.equalTo(self.leftImageView);
         make.width.equalTo(@(width));
         make.height.equalTo(@(imgH));
     }];
     [self.rightImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.middleImageView.mas_right).offset(16);
+        make.left.equalTo(self.middleImageView.mas_right).offset(itemSpace);
         make.top.bottom.equalTo(self.leftImageView);
         make.width.equalTo(@(width));
-        make.right.equalTo(self.contentView).offset(-HGSizeManager.marginRight);
         make.height.equalTo(@(imgH));
     }];
     

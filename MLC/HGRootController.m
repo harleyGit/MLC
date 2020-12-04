@@ -50,13 +50,13 @@
     NSDictionary *infoDictionary = [currentBundle infoDictionary];
     
     NSString *buildVersion = [infoDictionary objectForKey:@"CFBundleVersion"];
-    NSLog(@"版本号：%@", buildVersion);
+    SLog(@"版本号：%@", buildVersion);
     
     NSString *packageInfo = [infoDictionary objectForKey:@"CFBundleIdentifier"];
-    NSLog(@"App包名信息：%@", packageInfo);
+    SLog(@"App包名信息：%@", packageInfo);
     
     NSString *appNameInfo = [infoDictionary objectForKey:@"CFBundleDisplayName"];
-    NSLog(@"App名称信息：%@", appNameInfo);
+    SLog(@"App名称信息：%@", appNameInfo);
     
     NSString *device = [[UIDevice currentDevice].identifierForVendor UUIDString];
     NSLog(@"App设备ID: %@", device);

@@ -53,7 +53,7 @@
 //==========***********自定义方法***********==========//
 //自定义高效率的 NSLog(开发的时候打印，但是发布的时候不打印的NSLog)
 #ifdef DEBUG
-#define SLog(...) NSLog(@"🍎 🍎 %s %s[%d] \n %@\n\n", __TIME__, __func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#define SLog(...) NSLog(@"🍎 🍎  %s[%d] \n %@\n\n", __func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
 #else
 #define SLog(...)
 #endif

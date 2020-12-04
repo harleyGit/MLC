@@ -293,7 +293,7 @@ static NSInteger const kHGUndefinedIndex = -1;
     tabBarHeight -= mainWindow.frame.size.height - CGRectGetMaxY(absoluteRect);
     
     _viewX = self.viewFrame.origin.x;
-    _viewY = self.viewFrame.origin.y;
+    _viewY = self.viewFrame.origin.y + 24;
     if (CGRectEqualToRect(self.viewFrame, CGRectZero)) {
         _viewWidth = self.view.frame.size.width;
         //获得内容视图高度

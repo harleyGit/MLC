@@ -205,7 +205,7 @@ int const estimatedCellHeight = 150.0f;
         if (!cell) {
             cell = [[HGHomeJokeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([HGHomeJokeCell class])];
         }
-//        cell.model = model;
+        cell.model = model;
         resultCell = cell;
     }else if ([self.model.category isEqualToString:@"组图"]){
         HGHomeNewsSummaryModel *model = self.datas[indexPath.row];
@@ -221,7 +221,7 @@ int const estimatedCellHeight = 150.0f;
         if (!cell) {
             cell = [[HGVideoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([HGVideoCell class])];
         }
-//        cell.model = model;
+        cell.model = model;
         
         @weakify(self);
         [cell setImageViewCallBack:^(UIView * _Nonnull fatherView) {
