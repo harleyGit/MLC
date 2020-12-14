@@ -48,12 +48,7 @@ public:
     
     
     
-    /// P263  算法53： 数字在排序数组中出现的次数
-    /// @param array 传递的数组
-    /// @param num 指定的值
-    /// @param endIndex 数组终止索引
-    /// @param startIndex 数组起始索引，默认值为0，放在最后规定
-    int getSpecifyNumCount(int *array, int num, int endIndex, int startIndex = 0);
+    
     
     /// 二叉树创建
     /// @param binaryTree 根结点指针

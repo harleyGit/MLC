@@ -26,16 +26,13 @@ void testMethod_1();
 
 int main(int argc, const char * argv[]) {
     
-   
+    
     Chapter6 chapter6;
     
-     int array[7] = {1, 1, 2, 3, 4, 4, 4};
-     int index = chapter6.getSpecifyNumCount( array, 1, 7);
-     PrintFormat2("次数：%d", index);
     
     
     //chapter6.chapter6Run();
-   
+    
     //testMethod_1();
     
     system("pause");
