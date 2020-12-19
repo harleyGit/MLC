@@ -29,12 +29,23 @@ int main(int argc, const char * argv[]) {
     
     Chapter6 chapter6;
     
+    Chapter6:: BinaryTree *root = nullptr;
+    chapter6.createBinaryTree(&root);
     
+    printf("\n\n🍎🍎前序遍历：");
+    chapter6.prologueTraverseTree(root);
+    
+    printf("\n\n🍊🍊中序遍历：");
+    chapter6.middleOrderTraverseTree(root);
+    
+    printf("\n\n🍐🍐后序遍历：");
+    chapter6.postSequenceTraverseTree(root);
     
     //chapter6.chapter6Run();
     
     //testMethod_1();
     
+    printf("\n\n");
     system("pause");
     
     return 0;

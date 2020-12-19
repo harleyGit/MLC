@@ -38,21 +38,14 @@ public:
         struct BinaryTree *leftChild;
         struct BinaryTree *rightChild;
     }BinaryTree, *BinaryTreeNode;
-    //二叉树输入值
-    //    char characters[16] = "52##4##36##8##7";
-    //    char characters[24] = "ABDH#K###E##CFI###G#J##";
-    char characters[10] = "AB#D##C##";
-    //起始变量值
-    int number = 0;
-    
-    
-    
-    
     
     
     /// 二叉树创建
     /// @param binaryTree 根结点指针
     void createBinaryTree(BinaryTreeNode *binaryTree, int index = 0);
+    void prologueTraverseTree(Chapter6::BinaryTree *root);
+    void middleOrderTraverseTree(Chapter6::BinaryTree *root);
+    void postSequenceTraverseTree(Chapter6:: BinaryTree *root);
     
     
 };
